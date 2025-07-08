@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function () {
         setInterval(() => {
             Object.keys(cities).forEach(city => updateTime(city, cities[city]));
             updateExchangeRate();
-        }, 60000);
+        }, 5000);
     }
 
     // 페이지 로드 후 startUpdates 실행
