@@ -1,3 +1,42 @@
-Github pages<br>
-myBSD<br>
-2025.07.08<br>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>세계 시간 및 환율</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 30px;
+        }
+        .city-time {
+            font-size: 24px;
+        }
+        .rate {
+            font-size: 28px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>세계 시간 및 USD/KRW 환율</h1>
+
+    <div class="container">
+        <div id="new-york" class="city-time">New York: Loading...</div>
+        <div id="tokyo" class="city-time">Tokyo: Loading...</div>
+        <div id="london" class="city-time">London: Loading...</div>
+    </div>
+
+    <div class="rate" id="usd-krw">
+        USD/KRW: Loading...
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
