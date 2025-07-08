@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     const cities = {
+        'Seoul': 'Asia/Seoul',
         'New York': 'America/New_York',
         'Tokyo': 'Asia/Tokyo',
         'London': 'Europe/London'
