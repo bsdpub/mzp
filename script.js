@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
        if (data && data.rates.JPY) {
             const usdToJpy = data.rates.JPY;
-            document.getElementById('usd-jpy').textContent = `USD/JPY: ${usdToJpn.toFixed(2)}`;
+            document.getElementById('usd-jpy').textContent = `USD/JPY: ${usdToJpy.toFixed(2)}`;
         } else {
             document.getElementById('usd-jpy').textContent = "USD/JPY: 데이터 로드 실패";
         }
