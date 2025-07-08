@@ -35,11 +35,17 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
             document.getElementById('usd-eur').textContent = "USD/EUR: 데이터 로드 실패";
         }
-       if (data && data.rates.JPN) {
-            const usdToJpn = data.rates.JPN;
-            document.getElementById('usd-jpn').textContent = `USD/JPN: ${usdToJpn.toFixed(2)}`;
+       if (data && data.rates.JPY) {
+            const usdToJpy = data.rates.JPY;
+            document.getElementById('usd-jpy').textContent = `USD/JPY: ${usdToJpn.toFixed(2)}`;
         } else {
-            document.getElementById('usd-jpn').textContent = "USD/JPN: 데이터 로드 실패";
+            document.getElementById('usd-jpy').textContent = "USD/JPY: 데이터 로드 실패";
+        }
+        if (data && data.rates.GBP) {
+            const usdToGbp = data.rates.GBP;
+            document.getElementById('usd-gbp').textContent = `USD/GBP: ${usdToGbp.toFixed(2)}`;
+        } else {
+            document.getElementById('usd-gbp').textContent = "USD/GBP: 데이터 로드 실패";
         }
     }
 
