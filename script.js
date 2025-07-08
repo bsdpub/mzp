@@ -7,7 +7,13 @@ const cities = {
 // 시간 업데이트 함수
 function updateTime(city, timezone) {
     const now = new Date().toLocaleString('en-US', { timeZone: timezone });
-    document.getElementById(city).textContent = `${city}: ${new Date(now).toLocaleTimeString()}`;
+    // ID 값을 소문자 형태로 변경하여 찾기
+    const cityId = city.toLowerCase().replace(' ', '-');  // "New York" -> "new-york"
+    const cityElement = document.getElementById(cityId);
+    
+    if (cityElement) {
+        cityElement.textContent = `${city}: ${new Date(now).toLocaleTimeString()}`;
+    }
 }
 
 // 환율 업데이트 함수 (API 키 없이)
@@ -39,3 +45,4 @@ function startUpdates() {
 }
 
 startUpdates();
+
