@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>세계 시간 및 환율</title>
+    <title>myBSD 시간 및 환율</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -12,31 +12,35 @@
         }
         .container {
             display: flex;
+            flex-direction: column;
+            align-content: flex-start;
             justify-content: space-around;
-            margin-bottom: 30px;
+            margin-bottom: 10px;
         }
         .city-time {
-            font-size: 16px;
+            font-size: 20px;
         }
         .rate {
-            font-size: 16px;
-            margin-top: 16px;
+            font-size: 20px;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
     <h1>myBSD</h1>
-    <h3>세계 시간 및 USD/KRW 환율</h3>
-
-    <div class="container">  <div id="seoul" class="city-time">Seoul: Loading...</div> </div>
-    <div class="container">  <div id="new-york" class="city-time">New York: Loading...</div> </div>
-    <div class="container">  <div id="tokyo" class="city-time">Tokyo: Loading...</div> </div>
-    <div class="container">  <div id="london" class="city-time">London: Loading...</div>     </div>
-
-    <div class="rate" id="usd-krw">
-        USD/KRW: Loading...
+    <h3>세계 시간</h3>
+    <div class="container">  
+        <div id="london" class="city-time">London: Loading...</div>
+        <div id="seoul" class="city-time">Seoul: Loading...</div>
+        <div id="tokyo" class="city-time">Tokyo: Loading...</div>
+        <div id="new-york" class="city-time">New York: Loading...</div> 
     </div>
-
+    <h3>환율</h3>
+    <div class="container"> 
+        <div class="rate" id="usd-krw">  USD/KRW: Loading... </div>
+        <div class="rate" id="usd-eur">  USD/EUR: Loading... </div>
+        <div class="rate" id="usd-jpn">  USD/JPN: Loading... </div>
+    </div>
     <script src="./script.js"></script>
 </body>
 </html>
