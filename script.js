@@ -29,6 +29,18 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
             document.getElementById('usd-krw').textContent = "USD/KRW: 데이터 로드 실패";
         }
+        if (data && data.rates.EUR) {
+            const usdToEur = data.rates.EUR;
+            document.getElementById('usd-eur').textContent = `USD/EUR: ${usdToEur.toFixed(2)}`;
+        } else {
+            document.getElementById('usd-eur').textContent = "USD/EUR: 데이터 로드 실패";
+        }
+       if (data && data.rates.JPN) {
+            const usdToJpn = data.rates.JPN;
+            document.getElementById('usd-jpn').textContent = `USD/JPN: ${usdToJpn.toFixed(2)}`;
+        } else {
+            document.getElementById('usd-jpn').textContent = "USD/JPN: 데이터 로드 실패";
+        }
     }
 
     // 주기적으로 업데이트
