@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>3개 지역 날씨 요약</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    .city { border: 1px solid #ccc; padding: 15px; margin-bottom: 20px; border-radius: 10px; }
+    .city h2 { margin-top: 0; }
+    .forecast { display: flex; gap: 10px; flex-wrap: wrap; }
+    .day { border: 1px solid #eee; padding: 10px; border-radius: 5px; width: 120px; text-align: center; }
+  </style>
+</head>
+<body>
+  <h1>지정 지역 날씨 요약</h1>
+
+  <div id="weather-container"></div>
+
+  <script>
+    const API_KEY = '여기에_API_키_입력';  // ← OpenWeatherMap API 키
+    const cities = [
+      { name: "서울", lat: 37.5665, lon: 126.9780 },
+      { name: "부산", lat: 35.1796, lon: 129.0756 },
+      { name: "대전", lat: 36.3504, lon: 127.3845 }
+    ];
+
+    const container = document.getElementById("weather-container");
+
+    async function fetchWeather(city) {
+      const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${city.lat}&lon=${city.lon}&exclude=minutely,hourly,alerts&units=metric&lang=kr&appid=${API_KEY}`;
+      const res = await fetch(url);
+      return res.json();
+    }
+
+    function formatDate(dt) {
+      const date = new Date(dt * 1000);
+      return `${date.getMonth() + 1}/${date.getDate()}(${["일", "월", "화", "수", "목", "금", "토"][date.getDay()]})`;
+    }
+
+    function createWeatherCard(cityName, data) {
+      const div = document.createElement("div");
+      div.className = "city";
+
+      const today = data.daily[0];
+      let html = `
+        <h2>${cityName}</h2>
+        <p><strong>오늘:</strong> ${today.weather[0].description}, 최고 ${today.temp.max}°C / 최저 ${today.temp.min}°C</p>
+        <div class="forecast">
+      `;
+
+      for (let i = 1; i < 6; i++) {
+        const day = data.daily[i];
+        html += `
+          <div class="day">
+            <div>${formatDate(day.dt)}</div>
+            <div>${day.weather[0].main}</div>
+            <div>${day.temp.min}°C ~ ${day.temp.max}°C</div>
+          </div>
+        `;
+      }
+
+      html += "</div>";
+      div.innerHTML = html;
+      return div;
+    }
+
+    async function loadAllWeather() {
+      for (const city of cities) {
+        try {
+          const data = await fetchWeather(city);
+          const card = createWeatherCard(city.name, data);
+          container.appendChild(card);
+        } catch (e) {
+          console.error(`날씨 불러오기 실패: ${city.name}`, e);
+        }
+      }
+    }
+
+    loadAllWeather();
+  </script>
+</body>
+</html>
